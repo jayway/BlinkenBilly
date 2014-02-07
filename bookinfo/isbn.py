@@ -1,6 +1,8 @@
 """General info 
 """
 
+import isbnutils
+
 class Isbn(object):
     """Represents a ISBN entry
 
@@ -20,7 +22,10 @@ class Isbn(object):
 
         """
         self.isbn = isbn
-        self.title = ""
-        self.author = ""
+        print isbn
+        result = isbnutils.lookup(isbn)
+        print result
+        self.title = result['title']
+        self.author = result['author']
         self.keywords = []
         self.section = ""
