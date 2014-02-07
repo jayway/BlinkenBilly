@@ -9,7 +9,7 @@ class Isbn(object):
     Attributes:
       isbn (str): The ISBN number.
       title (str): The title.
-      author (str): The author.
+      author (list of str): List of authors.
       keywords (list of str): List of keywords.
       section (str): The section.
 
@@ -22,10 +22,9 @@ class Isbn(object):
 
         """
         self.isbn = isbn
-        print isbn
         result = isbnutils.lookup(isbn)
-        print result
         self.title = result['title']
-        self.author = result['author']
+        self.authors = result['authors']
+        self.publication_date = "" 
         self.keywords = []
         self.section = ""

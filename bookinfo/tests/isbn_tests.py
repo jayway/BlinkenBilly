@@ -20,5 +20,25 @@ class SimplisticTest(unittest.TestCase):
         book = isbn.Isbn("9780970601971")
         self.assertEquals(book.title, "Show Me the Numbers: Designing Tables and Graphs to Enlighten")
 
+    def test_get_author(self):
+        book = isbn.Isbn("9780970601971")
+        self.assertEquals(book.authors, ["Stephen Few"])
+
+    def test_get_author_no_hyperlink(self):
+        book = isbn.Isbn("9781449360078")
+        self.assertEquals(book.authors, ["Jamie Allen"])
+
+    def test_get_authors(self):
+        book = isbn.Isbn("9780988262591")
+        self.assertEquals(book.authors, ["Gene Kim", "Kevin Behr", "George Spafford"])
+
+    def test_get_authors_no_hyperlink(self):
+        book = isbn.Isbn("9780321718334")
+        self.assertEquals(book.authors, ["Nick Rozanski", "E\xc3in Woods"])
+
+    def test_get_authors_some_hyperlinks(self):
+        book = isbn.Isbn("9781449339197")
+        self.assertEquals(book.authors, ["Jurg van Vliet", "Flavia Paganelli", "Jasper Geurtsen"])
+
 if __name__ == '__main__':
     unittest.main()
